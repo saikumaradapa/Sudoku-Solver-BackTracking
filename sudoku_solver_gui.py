@@ -1,6 +1,7 @@
 import pygame, sys
 import numpy as np
 
+# initialization of pygame
 pygame.font.init()
 
 
@@ -57,7 +58,8 @@ def show_numbers(row, col):
                 text = fnt.render(str(board[row][col]), 2, (0, 0, 0))
         screen.blit(text, (col * 60 + 15, row * 60))
 
-
+# used to test board without GUI
+        
 def show_board() :
     for i in range(rows):
         for j in range(cols):
@@ -71,6 +73,8 @@ def show_board() :
 
 
 
+        
+# sample boards
 
 board = [
     [7,8,0,4,0,0,1,2,0],
