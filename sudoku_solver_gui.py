@@ -188,7 +188,7 @@ def show_instructions() :
     font = pygame.font.SysFont("monospace", 20, bold=True)
     label = font.render("Press SPACE to solve ", 0, (0, 0, 0))
     screen.blit(label, ( 20, height + 20))
-    label = font.render("-ask", 0, (0, 255, 0))
+    label = font.render("-ask", 0, green)
     screen.blit(label, (width - 57, height1 - 35))
 
 
