@@ -113,6 +113,8 @@ board2 =   [[1, 0, 5, 0, 0, 2, 0, 8, 4],
 
 
 
+# main function for solving the board
+
 def solve(bo):
     find = find_empty(bo)
     if not find:
