@@ -1,9 +1,10 @@
+# sudoku_solver_gui.py by sai kumar adapa
+
 import pygame, sys
 import numpy as np
 
 # initialization of pygame
 pygame.font.init()
-
 
 # constants and variables
 width = 540
@@ -29,14 +30,14 @@ cols = 9
 # cross_space = 55
 
 
-
 # screen
 
-screen = pygame.display.set_mode( (width, height1) )
+screen = pygame.display.set_mode((width, height1))
 pygame.display.set_caption("Sudoku solver from sai kumar adapa                    ")
 screen.fill(white)
 
-def draw_lines() :
+
+def draw_lines():
     # pygame.draw.line(screen, line_color, (0,200), (600, 200), )
     gap = width / 9
     for i in range(9 + 1):
@@ -49,7 +50,6 @@ def draw_lines() :
 
 
 def show_numbers(row, col):
-
     fnt = pygame.font.SysFont("comicsans", 40)
     text = fnt.render(str(board[row][col]), 2, blue)
     if str(board[row][col]) != str(0):
@@ -58,59 +58,57 @@ def show_numbers(row, col):
                 text = fnt.render(str(board[row][col]), 2, (0, 0, 0))
         screen.blit(text, (col * 60 + 15, row * 60))
 
+
 # used to test board without GUI
-        
-def show_board() :
+
+def show_board():
     for i in range(rows):
         for j in range(cols):
             fnt = pygame.font.SysFont("comicsans", 40)
             text = fnt.render(str(board[i][j]), 2, blue)
-            if int(board[i][j]) == int(board1[i][j]) :
+            if int(board[i][j]) == int(board1[i][j]):
                 if int(board1[i][j]) != 0:
                     text = fnt.render(str(board[i][j]), 2, (0, 0, 0))
-            if str(board[i][j]) != str(0) :
+            if str(board[i][j]) != str(0):
                 screen.blit(text, (j * 60 + 15, i * 60))
 
 
-
-        
 # sample boards
 
 board = [
-    [7,8,0,4,0,0,1,2,0],
-    [6,0,0,0,7,5,0,0,9],
-    [0,0,0,6,0,1,0,7,8],
-    [0,0,7,0,4,0,2,6,0],
-    [0,0,1,0,5,0,9,3,0],
-    [9,0,4,0,6,0,0,0,5],
-    [0,7,0,3,0,0,0,1,2],
-    [1,2,0,0,0,7,4,0,0],
-    [0,4,9,2,0,6,0,0,7]
+    [7, 8, 0, 4, 0, 0, 1, 2, 0],
+    [6, 0, 0, 0, 7, 5, 0, 0, 9],
+    [0, 0, 0, 6, 0, 1, 0, 7, 8],
+    [0, 0, 7, 0, 4, 0, 2, 6, 0],
+    [0, 0, 1, 0, 5, 0, 9, 3, 0],
+    [9, 0, 4, 0, 6, 0, 0, 0, 5],
+    [0, 7, 0, 3, 0, 0, 0, 1, 2],
+    [1, 2, 0, 0, 0, 7, 4, 0, 0],
+    [0, 4, 9, 2, 0, 6, 0, 0, 7]
 ]
 
 board1 = [
-    [7,8,0,4,0,0,1,2,0],
-    [6,0,0,0,7,5,0,0,9],
-    [0,0,0,6,0,1,0,7,8],
-    [0,0,7,0,4,0,2,6,0],
-    [0,0,1,0,5,0,9,3,0],
-    [9,0,4,0,6,0,0,0,5],
-    [0,7,0,3,0,0,0,1,2],
-    [1,2,0,0,0,7,4,0,0],
-    [0,4,9,2,0,6,0,0,7]
+    [7, 8, 0, 4, 0, 0, 1, 2, 0],
+    [6, 0, 0, 0, 7, 5, 0, 0, 9],
+    [0, 0, 0, 6, 0, 1, 0, 7, 8],
+    [0, 0, 7, 0, 4, 0, 2, 6, 0],
+    [0, 0, 1, 0, 5, 0, 9, 3, 0],
+    [9, 0, 4, 0, 6, 0, 0, 0, 5],
+    [0, 7, 0, 3, 0, 0, 0, 1, 2],
+    [1, 2, 0, 0, 0, 7, 4, 0, 0],
+    [0, 4, 9, 2, 0, 6, 0, 0, 7]
 ]
 
-board2 =   [[1, 0, 5, 0, 0, 2, 0, 8, 4],
-             [0, 0, 6, 3, 0, 1, 2, 0, 7],
-             [0, 2, 0, 0, 5, 0, 0, 0, 0],
-             [0, 9, 0, 0, 1, 0, 0, 0, 0],
-             [8, 0, 2, 0, 3, 6, 7, 4, 0],
-             [3, 0, 7, 0, 2, 0, 0, 9, 0],
-             [4, 7, 0, 0, 0, 8, 0, 0, 1],
-             [0, 0, 1, 6, 0, 0, 0, 0, 9],
-             [2, 6, 9, 1, 4, 0, 3, 7, 0]
-             ]
-
+board2 = [[1, 0, 5, 0, 0, 2, 0, 8, 4],
+          [0, 0, 6, 3, 0, 1, 2, 0, 7],
+          [0, 2, 0, 0, 5, 0, 0, 0, 0],
+          [0, 9, 0, 0, 1, 0, 0, 0, 0],
+          [8, 0, 2, 0, 3, 6, 7, 4, 0],
+          [3, 0, 7, 0, 2, 0, 0, 9, 0],
+          [4, 7, 0, 0, 0, 8, 0, 0, 1],
+          [0, 0, 1, 6, 0, 0, 0, 0, 9],
+          [2, 6, 9, 1, 4, 0, 3, 7, 0]
+          ]
 
 
 # main function for solving the board
@@ -125,7 +123,7 @@ def solve(bo):
         row, col = find
         show_numbers(row, col)
 
-    for i in range(1,10):
+    for i in range(1, 10):
         if valid(bo, i, (row, col)):
             bo[row][col] = i
 
@@ -152,9 +150,9 @@ def valid(bo, num, pos):
     box_x = pos[1] // 3
     box_y = pos[0] // 3
 
-    for i in range(box_y*3, box_y*3 + 3):
-        for j in range(box_x * 3, box_x*3 + 3):
-            if bo[i][j] == num and (i,j) != pos:
+    for i in range(box_y * 3, box_y * 3 + 3):
+        for j in range(box_x * 3, box_x * 3 + 3):
+            if bo[i][j] == num and (i, j) != pos:
                 return False
 
     return True
@@ -183,27 +181,37 @@ def find_empty(bo):
 
     return None
 
+
+
+
+def show_instructions() :
+    font = pygame.font.SysFont("monospace", 20, bold=True)
+    label = font.render("Press SPACE to solve ", 0, (0, 0, 0))
+    screen.blit(label, ( 20, height + 20))
+    label = font.render("-ask", 0, (0, 255, 0))
+    screen.blit(label, (width - 57, height1 - 35))
+
+
 print_board(board)
 # solve(board)
 show_board()
 print("___________________")
 print_board(board)
 
-
 draw_lines()
 
-#main loop
-while True :
-    for event in pygame.event.get() :
-        if event.type == pygame.QUIT :
+# main loop
+while True:
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
             sys.exit()
 
-        if event.type == pygame.KEYDOWN :
-            if event.key == pygame.K_SPACE :
+        if event.type == pygame.KEYDOWN:
+            if event.key == pygame.K_SPACE:
                 solve(board)
 
             if event.key == pygame.K_ESCAPE:
                 sys.exit()
 
-
+        show_instructions()
     pygame.display.update()
